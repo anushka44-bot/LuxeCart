@@ -8,9 +8,9 @@ const Footer = () => {
         <div>
           <img src={assets.logo} className="mb-5 w-32" alt="" />
           <p className="w-full md:w-2/3 text-gray-600">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem ut
-            consectetur nulla necessitatibus possimus reprehenderit alias
-            placeat adipisci ea minima.
+            Luxecart is a premium fashion brand offering stylish, high-quality
+            clothing with a touch of luxury. We blend modern trends with
+            timeless elegance to help you look confident every day.
           </p>
         </div>
 
