@@ -3,7 +3,7 @@ import { assets } from "../assets/assets";
 import axios from "axios";
 import { backendUrl } from "../App.jsx";
 
-const Add = () => {
+const Add = ({ token }) => {
   const [image1, setImage1] = useState(false);
   const [image2, setImage2] = useState(false);
   const [image3, setImage3] = useState(false);
@@ -29,7 +29,7 @@ const Add = () => {
       formData.append("category", category);
       formData.append("subcategory", subcategory);
       formData.append("bestseller", bestseller);
-      formData.append("sizes", sizes);
+      formData.append("sizes", JSON.stringify(sizes));
 
       image1 && formData.append("image1", image1);
       image2 && formData.append("image2", image2);
@@ -39,6 +39,7 @@ const Add = () => {
       const response = await axios.post(
         backendUrl + "/api/product/add",
         formData,
+        { headers: { token } },
       );
 
       console.log(response.data);
