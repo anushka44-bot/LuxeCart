@@ -11,14 +11,13 @@ const Product = () => {
   const [image, setImage] = useState("");
   const [size, setSize] = useState("");
 
-  const fetchProductData = async () => {
-    products.map((item) => {
-      if (item._id === productId) {
-        setProductData(item);
-        setImage(item.image[0]);
-        return null;
-      }
-    });
+  const fetchProductData = () => {
+    const product = products.find((item) => item._id === productId);
+
+    if (product) {
+      setProductData(product);
+      setImage(product.image[0]);
+    }
   };
 
   useEffect(() => {
@@ -41,12 +40,7 @@ const Product = () => {
           ))}
         </div>
         <div className="flex-1 max-w-[500px]">
-          <img
-            onClick={() => setImage(item)}
-            className="w-full h-auto"
-            src={image}
-            alt=""
-          />
+          <img className="w-full h-auto" src={image} alt="" />
         </div>
 
         {/*---------product info---------*/}
@@ -125,6 +119,7 @@ const Product = () => {
       <RelatedProducts
         category={productsData.category}
         subCategory={productsData.subCategory}
+        currentProductId={productsData._id}
       />
     </div>
   ) : (
