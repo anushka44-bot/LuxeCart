@@ -14,7 +14,7 @@ const RelatedProducts = ({ category, subCategory, currentProductId }) => {
       productsCopy = productsCopy.filter(
         (item) =>
           item.category === category &&
-          item.subCategory === subCategory &&
+          item.subcategory === subCategory &&
           item._id !== currentProductId,
       );
 

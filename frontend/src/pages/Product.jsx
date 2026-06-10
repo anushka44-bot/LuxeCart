@@ -118,7 +118,7 @@ const Product = () => {
 
       <RelatedProducts
         category={productsData.category}
-        subCategory={productsData.subCategory}
+        subCategory={productsData.subcategory}
         currentProductId={productsData._id}
       />
     </div>
