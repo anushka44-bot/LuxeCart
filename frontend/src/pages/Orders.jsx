@@ -22,6 +22,7 @@ const Orders = () => {
         {},
         { headers: { token } },
       );
+      console.log(response.data);
 
       if (response.data.success) {
         let allOrdersItem = [];
