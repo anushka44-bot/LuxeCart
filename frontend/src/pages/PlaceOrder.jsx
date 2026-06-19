@@ -44,13 +44,35 @@ const PlaceOrder = () => {
       key: import.meta.env.VITE_RAZORPAY_KEY_ID,
       amount: order.amount,
       currency: order.currency,
-      name: "Order Payment",
+      name: "LuxeCart",
+      description: "Order Payment",
       order_id: order.id,
-      receipt: order.receipt,
+
       handler: async (response) => {
-        console.log(response);
+        try {
+          const { data } = await axios.post(
+            backendUrl + "/api/order/verifyRazorpay",
+            {
+              razorpay_order_id: response.razorpay_order_id,
+            },
+            {
+              headers: { token },
+            },
+          );
+
+          if (data.success) {
+            navigate("/orders");
+            setCartItems({});
+          } else {
+            toast.error(data.message);
+          }
+        } catch (error) {
+          console.log(error);
+          toast.error(error.message);
+        }
       },
     };
+
     const rzp = new window.Razorpay(options);
     rzp.open();
   };
