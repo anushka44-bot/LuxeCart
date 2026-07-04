@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [currentState, setCurrentState] = useState("Login");
@@ -88,7 +89,12 @@ const Login = () => {
         required
       />
       <div className="w-full flex justify-between text-sm mt-[-8px]">
-        <p className="cursor-pointer">Forgot your password?</p>
+        <p
+          onClick={() => navigate("/forgot-password")}
+          className="cursor-pointer hover:text-blue-600"
+        >
+          Forgot your password?
+        </p>
         {currentState === "Login" ? (
           <p
             onClick={() => setCurrentState("Sign Up")}
